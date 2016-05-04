@@ -10,8 +10,11 @@ $(function () {
 
   var fruits = [apple, orange, banana, pear];
 
-  console.log(randomNumber(1,2));
+$('.box').on('mouseenter', function() {
+console.log("Ping!");
 
+
+});
   function randomNumber(min, max) {
   	return (Math.random() * (max - min) + min).toFixed(2);
   }
@@ -21,8 +24,8 @@ $(function () {
     for (var i = 0; i < array.length; i++) {
       if (array[i].price + fruitPrice < .5) {
         array[i].price = .5;
-      } else if (array[i].price + fruitPrice > 9.99) {
-        array[i].price = 9.99;
+      } else if (array[i].price + fruitPrice > 11.50) {
+        array[i].price = 11.50;
       } else {
         array[i].price += fruitPrice;
       }
