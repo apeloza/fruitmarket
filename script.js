@@ -6,15 +6,25 @@ $(function () {
   var orange = new Fruit(randomNumber(1,2),0,0);
   var banana = new Fruit(randomNumber(1,2),0,0);
   var pear = new Fruit(randomNumber(1,2),0,0);
-  var fruitSelected = $(this).data('fruitType');
+
 
   var fruits = [apple, orange, banana, pear];
+
 
 $('.box').on('mouseenter', function() {
 console.log("Ping!");
 
-
 });
+  var fruitSelected = $(this).data('fruitType');
+
+  $('.apple').data('fruitType', apple);
+  $('.orange').data('fruitType', orange);
+  $('.banana').data('fruitType', banana);
+  $('.pear').data('fruitType', pear);
+
+  $('.buttons').on('click', '.btn', buyFruit);
+
+
   function randomNumber(min, max) {
   	return (Math.random() * (max - min) + min).toFixed(2);
   }
