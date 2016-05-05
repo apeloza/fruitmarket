@@ -69,9 +69,13 @@ $('.fruitimage').on('mouseleave', function(){
       $(this).parent().data('fruitType').qtySold++;
       $(this).parent().data('fruitType').totalPurchasedCost += $(this).parent().data('fruitType').price;
       $(this).parent().data('fruitType').avgPurchasedCost = $(this).parent().data('fruitType').totalPurchasedCost / $(this).parent().data('fruitType').qtySold;
+      $(this).parent().find('.totalpurchased').text('Total ' + $(this).parent().data('fruitType').name + 's purchased: ' + $(this).parent().data('fruitType').qtySold);
+      $(this).parent().find('.averageprice').text('Average Purchased Cost: $' + $(this).parent().data('fruitType').avgPurchasedCost.toFixed(2));
+
+
     }
 
-    $('h2').text('Total Available Cash: $' + customerCash);
+    $('h2').text('Total Available Cash: $' + parseFloat(customerCash.toFixed(2)));
   }
 
   function Fruit(name,price,avgPurchasedCost,qtySold,totalPurchasedCost) {
