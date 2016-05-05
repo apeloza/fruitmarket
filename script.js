@@ -12,9 +12,13 @@ $(function () {
 
 
 $('.box').on('mouseenter', function() {
-console.log("Ping!");
+$(this).find('.info').toggleClass('hidden');
 
 });
+
+$('.box').on('mouseleave', function(){
+  $(this).find('.info').toggleClass('hidden');
+})
   var fruitSelected = $(this).data('fruitType');
 
   $('.apple').data('fruitType', apple);
