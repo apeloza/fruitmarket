@@ -10,13 +10,16 @@ h1, h2 {
   text-align: center;
 }
 
-.fruit, .buttons {
+.fruit, .costcontainer {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
 
-.box {
+.costcontainer {
+  margin-top: 15%;
+}
+.box, .currcost {
   width: 15%;
   height: 150px;
 }
