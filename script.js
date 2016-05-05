@@ -12,7 +12,7 @@ for (var j = 0; j < fruits.length; j++){
   displayCurrPrice(fruits[j].name, fruits[j].price);
 }
 
-setInterval(function() { changePrice(fruits)}, 15000);
+setInterval(changePrice, 15000);
 
 
 $('.fruitimage').on('mouseenter', function() {
@@ -24,7 +24,7 @@ $('.fruitimage').on('mouseleave', function(){
 
   $(this).closest('.box').find('.info').toggleClass('hidden');
 
-})
+});
 
 
   $('h2').text('Total Available Cash: $' + parseFloat(customerCash.toFixed(2)));
@@ -44,17 +44,17 @@ $('.fruitimage').on('mouseleave', function(){
   	return parseFloat((Math.random() * (max - min) + min).toFixed(2));
   }
 
-  function changePrice(array) {
+  function changePrice() {
 
-    for (var i = 0; i < array.length; i++) {
-      if (array[i].price + fruitPrice < .5) {
-        array[i].price = .5;
-      } else if (array[i].price + fruitPrice > 11.50) {
-        array[i].price = 11.50;
+    for (var i = 0; i < fruits.length; i++) {
+      if (fruits[i].price + fruitPrice < .5) {
+        fruits[i].price = .5;
+      } else if (fruits[i].price + fruitPrice > 11.50) {
+        fruits[i].price = 11.50;
       } else {
-        array[i].price += fruitPrice;
+        fruits[i].price += fruitPrice;
       }
-      displayCurrPrice(array[i].name, array[i].price)
+      displayCurrPrice(fruits[i].name, fruits[i].price)
       fruitPrice= randomNumber(-.5,.5);
     }
 
