@@ -11,13 +11,14 @@ $(function () {
   var fruits = [apple, orange, banana, pear];
 
 
-$('.box').on('mouseenter', function() {
-$(this).find('.info').toggleClass('hidden');
+$('.fruitimage').on('mouseenter', function() {
+  console.log("Yep");
+$(this).closest('.box').find('.info').toggleClass('hidden');
 
 });
 
-$('.box').on('mouseleave', function(){
-  $(this).find('.info').toggleClass('hidden');
+$('.fruitimage').on('mouseleave', function(){
+  $(this).closest('.box').find('.info').toggleClass('hidden');
 })
   var fruitSelected = $(this).data('fruitType');
 

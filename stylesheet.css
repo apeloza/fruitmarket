@@ -2,6 +2,10 @@ body {
 background-image: url("fruit-background.jpg");
 }
 
+.fruitimage{
+  display: block;
+  margin: auto;
+}
 h1, h2 {
   text-align: center;
 }
@@ -14,8 +18,7 @@ h1, h2 {
 
 .box {
   width: 15%;
-  height: 100px;
-  margin: 50px 0 20px 0;
+  height: 150px;
 }
 
 .btn {
@@ -23,53 +26,9 @@ h1, h2 {
   width: 100%;
 }
 
-.apple{
-  background-image: url("apple.png");
-  display: inline;
-  width: 20%;
-  height: 150px;
-  margin: 50px 0 20px 0;
-  background-size: contain;
-  background-repeat: no-repeat;
-  border-radius: 8px;
-}
-
-
-.orange{
-  background-image: url("orange.png");
-  width: 20%;
-  height: 150px;
-  margin: 50px 0 20px 0;
-  background-size: contain;
-  background-repeat: no-repeat;
-  border-radius: 8px;
-}
-
-
-.banana{
-  background-image:url('banana.png');
-  width: 20%;
-  height: 150px;
-  margin: 50px 0 20px 0;
-  background-size: contain;
-  background-repeat: no-repeat;
-  border-radius: 8px;
-}
-
-
-.pears{
-  background-image: url('pear.png');
-  width: 20%;
-  height: 150px;
-  margin: 50px 0 20px 0;
-  background-size: contain;
-  background-repeat: no-repeat;
-  border-radius: 8px;
-}
 
 .info{
-  width: 100%;
-  height: 100%;
+  flex: 1;
   background-color: #fff;
   opacity: 0.5;
 }
