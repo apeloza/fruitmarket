@@ -2,20 +2,28 @@ $(function () {
 
   var fruitPrice = randomNumber(-.5,.5);
   var customerCash = 100;
-  var apple = new Fruit(randomNumber(1,2),0,0,0);
-  var orange = new Fruit(randomNumber(1,2),0,0,0);
-  var banana = new Fruit(randomNumber(1,2),0,0,0);
-  var pear = new Fruit(randomNumber(1,2),0,0,0);
+  var apple = new Fruit('apple',randomNumber(1,2),0,0,0);
+  var orange = new Fruit('orange',randomNumber(1,2),0,0,0);
+  var banana = new Fruit('banana',randomNumber(1,2),0,0,0);
+  var pear = new Fruit('pear',randomNumber(1,2),0,0,0);
 
   var fruits = [apple, orange, banana, pear];
 
 
-$('.box').on('mouseenter', function() {
-console.log("Ping!");
+$('.fruitimage').on('mouseenter', function() {
+
+$(this).closest('.box').find('.info').toggleClass('hidden');
 
 });
 
-  $('h2').text('Total Available Cash: $' + customerCash);
+$('.fruitimage').on('mouseleave', function(){
+
+  $(this).closest('.box').find('.info').toggleClass('hidden');
+
+})
+
+
+  $('h2').text('Total Available Cash: $' + parseFloat(customerCash.toFixed(2)));
   $('.apple').data('fruitType', apple);
   $('.orange').data('fruitType', orange);
   $('.banana').data('fruitType', banana);
@@ -56,11 +64,12 @@ console.log("Ping!");
       $(this).parent().data('fruitType').totalPurchasedCost += $(this).parent().data('fruitType').price;
       $(this).parent().data('fruitType').avgPurchasedCost = $(this).parent().data('fruitType').totalPurchasedCost / $(this).parent().data('fruitType').qtySold;
     }
-    
+
     $('h2').text('Total Available Cash: $' + customerCash);
   }
 
-  function Fruit(price,avgPurchasedCost,qtySold,totalPurchasedCost) {
+  function Fruit(name,price,avgPurchasedCost,qtySold,totalPurchasedCost) {
+    this.name=name;
     this.price = price;
     this.avgPurchasedCost = avgPurchasedCost;
     this.qtySold = qtySold;
