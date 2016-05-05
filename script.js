@@ -2,11 +2,10 @@ $(function () {
 
   var fruitPrice = randomNumber(-.5,.5);
   var customerCash = 100;
-  var apple = new Fruit(randomNumber(1,2),0,0);
-  var orange = new Fruit(randomNumber(1,2),0,0);
-  var banana = new Fruit(randomNumber(1,2),0,0);
-  var pear = new Fruit(randomNumber(1,2),0,0);
-
+  var apple = new Fruit(randomNumber(1,2),0,0,0);
+  var orange = new Fruit(randomNumber(1,2),0,0,0);
+  var banana = new Fruit(randomNumber(1,2),0,0,0);
+  var pear = new Fruit(randomNumber(1,2),0,0,0);
 
   var fruits = [apple, orange, banana, pear];
 
@@ -15,18 +14,22 @@ $('.box').on('mouseenter', function() {
 console.log("Ping!");
 
 });
-  var fruitSelected = $(this).data('fruitType');
 
+  $('h2').text('Total Available Cash: $' + customerCash);
   $('.apple').data('fruitType', apple);
   $('.orange').data('fruitType', orange);
   $('.banana').data('fruitType', banana);
-  $('.pear').data('fruitType', pear);
+  $('.pears').data('fruitType', pear);
 
-  $('.buttons').on('click', '.btn', buyFruit);
+
+  $('.fruit').on('click', '.btn', buyFruit);
+
+
+
 
 
   function randomNumber(min, max) {
-  	return (Math.random() * (max - min) + min).toFixed(2);
+  	return parseFloat((Math.random() * (max - min) + min).toFixed(2));
   }
 
   function changePrice(array) {
@@ -45,19 +48,23 @@ console.log("Ping!");
 
   function buyFruit() {
 
-    if (customerCash - fruitSelected.price < 0){
+    if (customerCash - $(this).parent().data('fruitType').price < 0){
       alert('You dont have enough cash to make this purchase');
     } else {
-      customerCash -= fruitSelected.price;
-      fruitSelected.qtySold++;
-      fruitSelected.avgPurchasedCost = (fruitSelected.avgPurchasedCost + fruitSelected.price) / fruitSelected.qtySold;
+      customerCash -= $(this).parent().data('fruitType').price;
+      $(this).parent().data('fruitType').qtySold++;
+      $(this).parent().data('fruitType').totalPurchasedCost += $(this).parent().data('fruitType').price;
+      $(this).parent().data('fruitType').avgPurchasedCost = $(this).parent().data('fruitType').totalPurchasedCost / $(this).parent().data('fruitType').qtySold;
     }
+    
+    $('h2').text('Total Available Cash: $' + customerCash);
   }
 
-  function Fruit(price,avgPurchasedCost,qtySold) {
+  function Fruit(price,avgPurchasedCost,qtySold,totalPurchasedCost) {
     this.price = price;
     this.avgPurchasedCost = avgPurchasedCost;
     this.qtySold = qtySold;
+    this.totalPurchasedCost = totalPurchasedCost;
   }
 
 });
