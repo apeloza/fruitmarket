@@ -8,10 +8,14 @@ $(function () {
   var pear = new Fruit('pear',randomNumber(1,2),0,0,0);
 
   var fruits = [apple, orange, banana, pear];
+for (var j = 0; j < fruits.length; j++){
+  displayCurrPrice(fruits[j].name, fruits[j].price);
+}
+
+setInterval(function() { changePrice(fruits)}, 15000);
 
 
 $('.fruitimage').on('mouseenter', function() {
-
 $(this).closest('.box').find('.info').toggleClass('hidden');
 
 });
@@ -50,9 +54,11 @@ $('.fruitimage').on('mouseleave', function(){
       } else {
         array[i].price += fruitPrice;
       }
+      displayCurrPrice(array[i].name, array[i].price)
+
     }
     fruitPrice= randomNumber(-.5,.5);
-  }
+    }
 
   function buyFruit() {
 
@@ -69,11 +75,13 @@ $('.fruitimage').on('mouseleave', function(){
   }
 
   function Fruit(name,price,avgPurchasedCost,qtySold,totalPurchasedCost) {
-    this.name=name;
+    this.name = name;
     this.price = price;
     this.avgPurchasedCost = avgPurchasedCost;
     this.qtySold = qtySold;
     this.totalPurchasedCost = totalPurchasedCost;
   }
-
+function displayCurrPrice(fruitname, fruitprice){
+  $('.' + fruitname + 'cost').text("Current Cost: $" + fruitprice.toFixed(2));
+}
 });
