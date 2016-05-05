@@ -55,9 +55,9 @@ $('.fruitimage').on('mouseleave', function(){
         array[i].price += fruitPrice;
       }
       displayCurrPrice(array[i].name, array[i].price)
-
+      fruitPrice= randomNumber(-.5,.5);
     }
-    fruitPrice= randomNumber(-.5,.5);
+
     }
 
   function buyFruit() {
